@@ -16,8 +16,8 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import noValue from '../../assets/noValue.svg'
 import BarVertical from './components/BarVertical'
 import { useEffect } from 'react';
-import { obtener } from '../../services/api/kpis/kpis';
-
+import { obtener, obtenerGrafico1 } from '../../services/api/kpis/kpis';
+import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
 export default function index() {
   const { mostrarNotificacion, cargarUsuario, mostrarLoader, usuario } = useAuth();
   const [kpis,setKpis ]= useState(null)
@@ -28,6 +28,17 @@ export default function index() {
   useEffect(()=>{
     const fetching = async (id) => {
       const data = await obtener()
+      const resp2 = await obtenerGrafico1()
+
+      let label = []
+      let value = []
+      Object.keys(resp2.data).forEach(function(key, index) {
+        
+        label.push(key)
+        value.push(resp2.data[key] )
+      });
+
+      setData1({label,value});
       setKpis(data.data)
     }
     fetching()
@@ -123,7 +134,7 @@ export default function index() {
                   </Avatar>
                   <Avatar variant="rounded" style={{ marginTop: 5, backgroundColor: '#4527a0', borderRadius: 5, marginBottom: 15 }} >
 
-                    <DescriptionOutlinedIcon />
+                    <InsertChartOutlinedIcon />
 
                   </Avatar>
 
@@ -149,7 +160,7 @@ export default function index() {
                   </Avatar>
                   <Avatar variant="rounded" style={{ marginTop: 5, backgroundColor: '#1362A7', borderRadius: 5, marginBottom: 15 }} >
 
-                    <DescriptionOutlinedIcon />
+                    <InsertChartOutlinedIcon />
 
                   </Avatar>
 
@@ -175,7 +186,7 @@ export default function index() {
                   </Avatar>
                   <Avatar variant="rounded" style={{ marginTop: 5, backgroundColor: '#2E6A54', borderRadius: 5, marginBottom: 15 }} >
 
-                    <DescriptionOutlinedIcon />
+                    <InsertChartOutlinedIcon />
 
                   </Avatar>
 
@@ -195,7 +206,7 @@ export default function index() {
 
                 {
                   data1.label != 0 && data1.value != 0 ? (
-                    <BarVertical factura={cajaVenta.factura} caja={cajaVenta.caja} text="Los 5 examenes más solicitados" />
+                    <BarVertical label={data1.label} value={data1.value} text="Los 5 examenes más solicitados" />
                   )
                     :
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>

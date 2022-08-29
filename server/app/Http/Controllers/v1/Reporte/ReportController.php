@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Pacient;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 
 class ReportController extends Controller
 {
@@ -19,15 +19,34 @@ class ReportController extends Controller
         $orders2 = Order::whereHas('plannings', function ($query) {
             return $query->where('is_complete', '=', false);
         })->count();
-        
+
         return response()->json([
             "status" => "200",
             "message" => 'Datos obtenidos con éxito',
             "data" => [
-                "pacients" =>$pacients,
+                "pacients" => $pacients,
                 "orders1" => $orders1,
                 "orders2" => $orders2,
             ],
+            "type" => 'success'
+        ]);
+    }
+    public function graph1()
+    {
+        $orders1 = Order::whereHas('plannings', function ($query) {
+            return $query->where('is_complete', '=', true);
+        })->whereBetween('created_at', 
+        [Carbon::now()->subMonth(3), Carbon::now()]
+            )->get()->sortBy(function ($item) {
+                return $item->created_at;
+           })->groupBy(function ($date) {
+            return Carbon::parse($date->created_at)->format('F');
+        })->map->count();
+
+        return response()->json([
+            "status" => "200",
+            "message" => 'Datos obtenidos con éxito',
+            "data" =>   $orders1,
             "type" => 'success'
         ]);
     }

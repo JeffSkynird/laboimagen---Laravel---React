@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 export default function BarChart(props) {
     const [series,setSeries]=useState([{
       name: 'Monto ($)',
-      data: [props.factura, props.caja]
+      data: props.value
     }])
       const [options,setOptions]=useState({
         chart: {
@@ -20,8 +20,7 @@ export default function BarChart(props) {
             enabled: false
           },
           xaxis: {
-            categories: ['Ventas', 'Caja'
-            ],
+            categories: props.label,
           },  title: {
             text: props.text,
           
