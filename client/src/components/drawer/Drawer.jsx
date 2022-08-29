@@ -164,7 +164,7 @@ function ResponsiveDrawer(props) {
           </IconButton>
           <div>
           <Typography variant="h6" noWrap component="div" color="primary">
-            LaboImagen
+          ClinicSystem
           </Typography>
           <Typography variant="body2" color="initial" sx={{color:'gray'}}>Sistema de laboratorio clínico</Typography>
           </div>

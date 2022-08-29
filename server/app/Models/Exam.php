@@ -33,5 +33,15 @@ class Exam extends Model
     {
         return $this->hasMany(Planning::class);
     }
+       // this is the recommended way for declaring event handlers
+       public static function boot() {
+        parent::boot();
+        self::deleting(function($user) { // before delete() method call this
+             $user->plannings()->each(function($photo) {
+                $photo->delete(); // <-- direct deletion
+             });
+             // do the rest of the cleanup...
+        });
+    }
 
 }

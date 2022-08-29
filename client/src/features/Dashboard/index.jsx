@@ -136,7 +136,7 @@ export default function index() {
         <Grid item xs={12} md={12} >
           <Grid container spacing={2}>
 
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={4}>
               <Card style={{ width: '100%', height: 150, marginRight: 20, marginBottom: 5, backgroundColor: '#5e35b1', borderRadius: 12 }}>
                 <CardContent>
                   <Avatar variant="rounded" style={{ zIndex: 1, height: 30, width: 30, position: 'absolute', top: 15, right: 10, backgroundColor: '#5e35b1', borderRadius: 5, marginBottom: 15 }} >
@@ -162,7 +162,7 @@ export default function index() {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={4}>
               <Card style={{ width: '100%', height: 150, marginRight: 20, marginBottom: 5, backgroundColor: '#1e88e5', borderRadius: 12 }}>
                 <CardContent>
                   <Avatar variant="rounded" style={{ zIndex: 1, height: 30, width: 30, position: 'absolute', top: 15, right: 10, backgroundColor: '#5e35b1', borderRadius: 5, marginBottom: 15 }} >
@@ -188,7 +188,7 @@ export default function index() {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={4}>
               <Card style={{ width: '100%', height: 150, marginRight: 20, marginBottom: 5, backgroundColor: '#4DB48D', borderRadius: 12 }}>
                 <CardContent>
                   <Avatar variant="rounded" style={{ zIndex: 1, height: 30, width: 30, position: 'absolute', top: 15, right: 10, backgroundColor: '#5e35b1', borderRadius: 5, marginBottom: 15 }} >
@@ -220,7 +220,7 @@ export default function index() {
 
                 {
                   data1.label != 0 && data1.value != 0 ? (
-                    <BarVertical label={data1.label} value={data1.value} text="Ordenes efectuadas en los ultimos 3 meses" />
+                    <BarVertical label={data1.label} value={data1.value} text="Órdenes efectuadas en los últimos tres meses" />
                   )
                     :
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -237,7 +237,7 @@ export default function index() {
                 
                 {
                   data2.label != 0 && data2.value != 0 ? (
-                    <PieChart label={data2.label} value={data2.value} text="Ordenes efectuadas en los ultimos 3 meses" />
+                    <PieChart label={data2.label} value={data2.value} text="Los tres exámenes más solicitados" />
                   )
                     :
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
