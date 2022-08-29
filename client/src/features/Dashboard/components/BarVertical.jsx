@@ -13,11 +13,11 @@ export default function BarChart(props) {
           plotOptions: {
             bar: {
               borderRadius: 4,
-              horizontal: true,
+              horizontal: false,
             }
           },
           dataLabels: {
-            enabled: false
+            enabled: true
           },
           xaxis: {
             categories: props.label,

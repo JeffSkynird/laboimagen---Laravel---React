@@ -206,7 +206,7 @@ export default function index() {
 
                 {
                   data1.label != 0 && data1.value != 0 ? (
-                    <BarVertical label={data1.label} value={data1.value} text="Los 5 examenes más solicitados" />
+                    <BarVertical label={data1.label} value={data1.value} text="Ordenes efectuadas en los ultimos 3 meses" />
                   )
                     :
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
