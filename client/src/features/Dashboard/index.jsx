@@ -15,13 +15,15 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import noValue from '../../assets/noValue.svg'
 import BarVertical from './components/BarVertical'
+import PieChart from './components/PieChart'
 import { useEffect } from 'react';
-import { obtener, obtenerGrafico1 } from '../../services/api/kpis/kpis';
+import { obtener, obtenerGrafico1, obtenerGrafico2 } from '../../services/api/kpis/kpis';
 import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
 export default function index() {
   const { mostrarNotificacion, cargarUsuario, mostrarLoader, usuario } = useAuth();
   const [kpis,setKpis ]= useState(null)
   const [data1,setData1 ]= useState({label:[],value:[]})
+  const [data2,setData2 ]= useState({label:[],value:[]})
 
   const navigate = useNavigate();
 
@@ -29,7 +31,7 @@ export default function index() {
     const fetching = async (id) => {
       const data = await obtener()
       const resp2 = await obtenerGrafico1()
-
+      const resp3 = await obtenerGrafico2();
       let label = []
       let value = []
       Object.keys(resp2.data).forEach(function(key, index) {
@@ -38,7 +40,19 @@ export default function index() {
         value.push(resp2.data[key] )
       });
 
+      let label2 = []
+      let value2 = []
+      Object.keys(resp3.data).forEach(function(key, index) {
+        
+        label2.push(key)
+        value2.push(resp3.data[key] )
+      });
+
+      console.log(label2)
+      console.log(value2)
       setData1({label,value});
+      setData2({label:label2,value:value2});
+
       setKpis(data.data)
     }
     fetching()
@@ -201,12 +215,29 @@ export default function index() {
               </Card>
             </Grid>
 
-            <Grid item md={12} xs={12}>
+            <Grid item md={6} xs={12}>
               <div style={{ marginTop: 15 }} >
 
                 {
                   data1.label != 0 && data1.value != 0 ? (
                     <BarVertical label={data1.label} value={data1.value} text="Ordenes efectuadas en los ultimos 3 meses" />
+                  )
+                    :
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={noValue} width={150} height={150} alt="" srcset="" />
+                      <p>No hay registros</p>
+                    </div>
+                }
+              </div>
+
+
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <div style={{ marginTop: 15 }} >
+                
+                {
+                  data2.label != 0 && data2.value != 0 ? (
+                    <PieChart label={data2.label} value={data2.value} text="Ordenes efectuadas en los ultimos 3 meses" />
                   )
                     :
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>

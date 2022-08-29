@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\v1\Reporte;
 
 use App\Http\Controllers\Controller;
+use App\Models\Exam;
 use App\Models\Order;
 use App\Models\Pacient;
+use App\Models\Planning;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -47,6 +49,22 @@ class ReportController extends Controller
             "status" => "200",
             "message" => 'Datos obtenidos con éxito',
             "data" =>   $orders1,
+            "type" => 'success'
+        ]);
+    }
+    public function graph2()
+    {
+        $orders1 = Exam::whereHas('plannings', function ($query) {
+            return $query->where('is_complete', '=', true);
+        })->get()->groupBy('name');
+        $orders2 = Planning::with('exam')->where('is_complete',true)->get()->groupBy('exam.name')->map(function ($row) {
+            return $row->count('exam.name');
+         })->sortDesc()->take(3);  
+
+        return response()->json([
+            "status" => "200",
+            "message" => 'Datos obtenidos con éxito',
+            "data" =>   $orders2,
             "type" => 'success'
         ]);
     }
