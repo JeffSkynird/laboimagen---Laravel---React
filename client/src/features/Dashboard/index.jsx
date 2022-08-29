@@ -15,6 +15,8 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import noValue from '../../assets/noValue.svg'
 import BarVertical from './components/BarVertical'
+import { useEffect } from 'react';
+import { obtener } from '../../services/api/kpis/kpis';
 
 export default function index() {
   const { mostrarNotificacion, cargarUsuario, mostrarLoader, usuario } = useAuth();
@@ -23,6 +25,13 @@ export default function index() {
 
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    const fetching = async (id) => {
+      const data = await obtener()
+      setKpis(data.data)
+    }
+    fetching()
+  },[])
 
   const eliminar = async (id) => {
     mostrarLoader(true)
@@ -103,7 +112,7 @@ export default function index() {
           <Grid container spacing={2}>
 
             <Grid item xs={12} md={3}>
-              <Card style={{ width: '100%', height: 140, marginRight: 20, marginBottom: 5, backgroundColor: '#5e35b1', borderRadius: 12 }}>
+              <Card style={{ width: '100%', height: 150, marginRight: 20, marginBottom: 5, backgroundColor: '#5e35b1', borderRadius: 12 }}>
                 <CardContent>
                   <Avatar variant="rounded" style={{ zIndex: 1, height: 30, width: 30, position: 'absolute', top: 15, right: 10, backgroundColor: '#5e35b1', borderRadius: 5, marginBottom: 15 }} >
                     <IconButton aria-label="show 4 new mails" color="inherit" >
@@ -120,7 +129,7 @@ export default function index() {
 
 
                   <Typography variant="h4" style={{ color: 'white', fontSize: '2.125rem' }} >
-                    {kpis != null ? kpis.ventas : 0}
+                    {kpis != null ? kpis.pacients : 0}
                   </Typography>
                   <Typography variant="subtitle1" style={{ color: 'white' }} gutterBottom>
                     Número pacientes
@@ -129,7 +138,7 @@ export default function index() {
               </Card>
             </Grid>
             <Grid item xs={12} md={3}>
-              <Card style={{ width: '100%', height: 140, marginRight: 20, marginBottom: 5, backgroundColor: '#1e88e5', borderRadius: 12 }}>
+              <Card style={{ width: '100%', height: 150, marginRight: 20, marginBottom: 5, backgroundColor: '#1e88e5', borderRadius: 12 }}>
                 <CardContent>
                   <Avatar variant="rounded" style={{ zIndex: 1, height: 30, width: 30, position: 'absolute', top: 15, right: 10, backgroundColor: '#5e35b1', borderRadius: 5, marginBottom: 15 }} >
                     <IconButton aria-label="show 4 new mails" color="inherit" >
@@ -146,7 +155,7 @@ export default function index() {
 
 
                   <Typography variant="h4" style={{ color: 'white', fontSize: '2.125rem' }} >
-                    {kpis != null ? kpis.ventas : 0}
+                    {kpis != null ? kpis.orders1 : 0}
                   </Typography>
                   <Typography variant="subtitle1" style={{ color: 'white' }} gutterBottom>
                     Órdenes efectuadas
@@ -155,7 +164,7 @@ export default function index() {
               </Card>
             </Grid>
             <Grid item xs={12} md={3}>
-              <Card style={{ width: '100%', height: 140, marginRight: 20, marginBottom: 5, backgroundColor: '#4DB48D', borderRadius: 12 }}>
+              <Card style={{ width: '100%', height: 150, marginRight: 20, marginBottom: 5, backgroundColor: '#4DB48D', borderRadius: 12 }}>
                 <CardContent>
                   <Avatar variant="rounded" style={{ zIndex: 1, height: 30, width: 30, position: 'absolute', top: 15, right: 10, backgroundColor: '#5e35b1', borderRadius: 5, marginBottom: 15 }} >
                     <IconButton aria-label="show 4 new mails" color="inherit" >
@@ -172,7 +181,7 @@ export default function index() {
 
 
                   <Typography variant="h4" style={{ color: 'white', fontSize: '2.125rem' }} >
-                    {kpis != null ? kpis.ventas : 0}
+                    {kpis != null ? kpis.orders2 : 0}
                   </Typography>
                   <Typography variant="subtitle1" style={{ color: 'white' }} gutterBottom>
                     Órdenes pendientes

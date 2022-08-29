@@ -33,6 +33,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('pacient_orders/{id}', 'App\Http\Controllers\v1\Administracion\OrderController@pacientOrders');
 
     Route::get('print/{id}', 'App\Http\Controllers\v1\Administracion\ResultController@printPdf');
+    Route::get('kpis', 'App\Http\Controllers\v1\Reporte\ReportController@kpis');
 
     
     Route::middleware('auth:api')->group(function () {
