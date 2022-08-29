@@ -222,6 +222,7 @@ margin: 0px auto;
                 <tr>
                     <th class="tg-0pky"  style="background-color:#E5E5E5;">Examen</th>
                     <th class="tg-0pky" style="background-color:#E5E5E5;">Resultado</th>
+                    <th class="tg-0lax" style="background-color:#E5E5E5;">Unidad</
                     <th class="tg-0lax" style="background-color:#E5E5E5;">Rango</th>
                 </tr>
             </thead>
@@ -231,6 +232,7 @@ margin: 0px auto;
                 <tr >
                     <td>{{ $d->exam }}</td>
                     <td>{{ $d->value }}</td>
+                    <td>{{ $d->unity }}</td>
                     <td>{{ $d->description }}</td>
                 </tr>
                 @endforeach

@@ -78,7 +78,7 @@ export default function Form(props) {
             color="inherit"
             href="/ordenes"
         >
-            Ordenes
+            Órdenes
         </Link>,
         <Typography key="3" color="text.primary">
             {state ? "Editar" : "Crear"}

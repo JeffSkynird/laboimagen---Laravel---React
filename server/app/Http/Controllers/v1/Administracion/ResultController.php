@@ -225,7 +225,7 @@ class ResultController extends Controller
             ->join('exams', 'plannings.exam_id', '=', 'exams.id')
             ->join('categories', 'exams.category_id', '=', 'categories.id')
             ->where('plannings.order_id', $order->id)
-            ->select('categories.name as category', 'exams.name as exam', 'plannings.value', 'exams.description')
+            ->select('categories.name as category', 'exams.name as exam', 'plannings.value', 'exams.description','exams.unity')
             ->get()->groupBy('category');
         $bornDate = date('Y') - Carbon::parse($pacient->born_date)->format('Y');
         $pdf =  PDF::loadView('results', ['pacient' => $pacient, 'data' => $data, 'order_date' => $order->created_at,'borndate'=>$bornDate]);

@@ -15,6 +15,7 @@ import Result from '../../features/Results'
 import ResultForm from '../../features/Results/components/Form'
 import RequireAuth from '../auth/RequireAuth'
 import PacientResults from '../../features/Pacients/components/Results'
+import Dashboard from '../../features/Dashboard'
 
 
 export default function Router() {
@@ -41,6 +42,7 @@ export default function Router() {
             <Route path="/resultados/crear" element={<RequireAuth><ResultForm/></RequireAuth>} />
             <Route path="/resultados/editar" element={<RequireAuth><ResultForm/></RequireAuth>} />
             <Route path="/pacientes/resultados" element={<RequireAuth><PacientResults/></RequireAuth>} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="login" element={<Login />} />
             <Route path="consulta" element={<Consulta />} />

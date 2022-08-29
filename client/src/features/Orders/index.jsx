@@ -20,7 +20,7 @@ export default function index() {
 
   const eliminarRegistro = async (id) => {
     mostrarLoader(true)
-    const data = await eliminar(id)
+    const data = await eliminar(id,usuario.token)
     mostrarLoader(false)
     mostrarNotificacion(data)
     refetch()
@@ -72,7 +72,7 @@ export default function index() {
       Administración
     </Link>,
     <Typography key="3" color="text.primary">
-      Ordenes
+      Órdenes
     </Typography>,
   ];
   return (

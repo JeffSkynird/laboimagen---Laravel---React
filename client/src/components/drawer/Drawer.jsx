@@ -31,6 +31,7 @@ import { removeSession } from '../../services/session/Session';
 import { cerrarSesion } from '../../services/api/auth/login';
 import { useLocation, useNavigate } from 'react-router-dom';
 import indicador from '../../assets/indicador.png';
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -57,6 +58,15 @@ function ResponsiveDrawer(props) {
       </div>
       <Divider />
       <List>
+      <ListItem disablePadding>
+          {location.pathname.includes("/dashboard")&&(indicator)}
+          <ListItemButton  onClick={()=>navigate("/dashboard")}>
+            <ListItemIcon>
+              <DashboardOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Dashboard"} />
+          </ListItemButton>
+        </ListItem>
         <ListItem disablePadding>
           {location.pathname.includes("/pacientes")&&(indicator)}
           <ListItemButton  onClick={()=>navigate("/pacientes")}>
@@ -72,17 +82,7 @@ function ResponsiveDrawer(props) {
             <ListItemIcon>
               <AssignmentIndOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary={"Ordenes"} />
-          </ListItemButton>
-        </ListItem>
-        
-        <ListItem disablePadding>
-        {location.pathname.includes("/examenes")&&(indicator)}
-          <ListItemButton onClick={()=>navigate("/examenes")}>
-            <ListItemIcon>
-              <MedicalServicesOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Examenes"} />
+            <ListItemText primary={"Órdenes"} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -94,6 +94,16 @@ function ResponsiveDrawer(props) {
             <ListItemText primary={"Resultados"} />
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding>
+        {location.pathname.includes("/examenes")&&(indicator)}
+          <ListItemButton onClick={()=>navigate("/examenes")}>
+            <ListItemIcon>
+              <MedicalServicesOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Exámenes"} />
+          </ListItemButton>
+        </ListItem>
+       
       </List>
       <Divider />
       <List>

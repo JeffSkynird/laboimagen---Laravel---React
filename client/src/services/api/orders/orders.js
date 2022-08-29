@@ -70,12 +70,12 @@ export const editar= async (obj,token) => {
     const { data } = await axios(setting)
     return data;
 };
-export const eliminar = async (id) => {
+export const eliminar = async (id,token) => {
     let url = import.meta.env.VITE_API_URL+ "orders/"+id
     let setting = {
         method: "DELETE",
         url: url,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Accept': 'application/json' ,'Authorization': `Bearer ${token}` }
     };
     const { data } = await axios(setting)
     return data;

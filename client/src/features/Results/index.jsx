@@ -82,7 +82,7 @@ export default function index() {
       Administración
     </Link>,
     <Typography key="3" color="text.primary">
-      Resultados de ordenes
+      Resultados de Órdenes
     </Typography>,
   ];
 
