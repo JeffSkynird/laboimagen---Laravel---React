@@ -96,6 +96,8 @@ class CategoryController extends Controller
         try {
             $category = Category::find($id);
             $category->update($request->all());
+              //ELIMINADO EXAMENES PREVIOS 💀
+              $category->exams()->delete();
             foreach ($request['exams'] as $exam) {
                 $obj = [
                     'name' => $exam['name'],

@@ -30,4 +30,15 @@ class Pacient extends Model
         return  Carbon::parse($date)->format('Y-m-d H:i:s');
     }
     
+     // this is the recommended way for declaring event handlers
+     public static function boot() {
+        parent::boot();
+        self::deleting(function($user) { // before delete() method call this
+             $user->orders()->each(function($photo) {
+                $photo->delete(); // <-- direct deletion
+             });
+             // do the rest of the cleanup...
+        });
+    }
+
 }

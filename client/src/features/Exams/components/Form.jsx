@@ -41,7 +41,7 @@ export default function Form(props) {
             accessor: 'name',
         },
         {
-            Header: 'Descripción',
+            Header: 'Rango',
             accessor: 'description',
         },
         {
@@ -91,10 +91,10 @@ export default function Form(props) {
         </Typography>,
     ];
     const eliminarExamen = (id) => {
-        if(!id){
+       
             const newDatos = datos.filter(item => item.id !== id)
             setDatos(newDatos)
-        }
+      
     }
     const agregar = () => {
         setOpenModal(true)
@@ -108,7 +108,7 @@ export default function Form(props) {
         },
         {
             name: 'description',
-            label: 'Descripción',
+            label: 'Rango',
             type: 'text',
             style: { width: '100%' },
         },
@@ -134,6 +134,7 @@ export default function Form(props) {
     const entrar = async (dt) => {
         mostrarLoader(true)
         dt.exams = datos
+        dt.description="Ninguna";
 
         console.log(dt)
         let data;
@@ -193,7 +194,7 @@ export default function Form(props) {
                     name="name"
                 />
             </Grid>
-            <Grid item xs={12}>
+     {/*        <Grid item xs={12}>
                 <TextField
                     variant="outlined"
                     label="Descripción"
@@ -204,7 +205,7 @@ export default function Form(props) {
                     sx={{ width: '100%' }}
                     name="description"
                 />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
 
                 <Table columns={columns} data={datos} onAdd={agregar} />

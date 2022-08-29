@@ -35,6 +35,7 @@ class OrderController extends Controller
             }
             $params['user_id'] = Auth::id();
             $order = Order::create($params);
+         
             foreach ($params['exams'] as $exam) {
                 $obj = [
                     'exam_id' => $exam['id'],
@@ -106,6 +107,8 @@ class OrderController extends Controller
                 ]);
             } */
             $order->update($request->all());
+               //ELIMINADO EXAMENES PREVIOS 💀
+               $order->plannings()->delete();
             foreach ($request['exams'] as $exam) {
                 $obj = [
                     'exam_id' => $exam['id'],

@@ -23,7 +23,7 @@ function App() {
               <Router />
             </Drawer>
            
-            <ReactQueryDevtools initialIsOpen={false} />
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
           </QueryClientProvider>
         </Theme>
       </Store>

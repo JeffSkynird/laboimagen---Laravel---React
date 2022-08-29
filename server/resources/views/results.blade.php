@@ -112,8 +112,22 @@
 
             margin: 0px auto;
         }
+        .tg2 {
 
+
+margin: 0px auto;
+}
         .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 0px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 5px 5px;
+            word-break: normal;
+        }
+        .tg2 td {
             border-color: black;
             border-style: solid;
             border-width: 1px;
@@ -135,13 +149,25 @@
             padding: 5px 5px;
             word-break: normal;
         }
+        .tg2 th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 5px 5px;
+            word-break: normal;
+        }
 
         .tg .tg-0lax {
             text-align: left;
             vertical-align: top
         }
-        footer {
-               margin-bottom:-150px;
+        .footer {
+               position:absolute;
+               bottom:-50px;
 
             }
     </style>
@@ -164,8 +190,8 @@
 
             <thead>
                 <tr>
-                    <th class="tg-0lax" style="color:#808080;font-weight:bold;">PACIENTE</th>
-                    <th class="tg-0lax">{{$pacient->names}} {{$pacient->last_names}}</th>
+                    <th class="tg-0lax" style="color:#808080;font-weight:bold;border:none;">PACIENTE</th>
+                    <th class="tg-0lax" style="border:none;">{{$pacient->names}} {{$pacient->last_names}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -191,12 +217,12 @@
     <section class="" style="margin-bottom:15px;">
     <p style="text-align:center;color:black;font-weight:bold;">{{$key}}</p>
 
-        <table class="tg" style="table-layout: fixed; width: 100%;">
+        <table class="tg2" style="table-layout: fixed; width: 100%;">
             <thead>
                 <tr>
                     <th class="tg-0pky"  style="background-color:#E5E5E5;">Examen</th>
                     <th class="tg-0pky" style="background-color:#E5E5E5;">Resultado</th>
-                    <th class="tg-0lax" style="background-color:#E5E5E5;">Descripción</th>
+                    <th class="tg-0lax" style="background-color:#E5E5E5;">Rango</th>
                 </tr>
             </thead>
             <tbody>
@@ -214,7 +240,7 @@
     @endforeach
 
 
-
+    <img src="{{ public_path('footerFinal.png') }}" class="footer">
 
 </body>
 

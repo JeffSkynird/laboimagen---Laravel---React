@@ -85,10 +85,10 @@ export default function Form(props) {
         </Typography>,
     ];
     const eliminarExamen = (id) => {
-        if (!id) {
+       
             const newDatos = datos.filter(item => item.id !== id)
             setDatos(newDatos)
-        }
+        
     }
     const agregar = () => {
         setOpenModal(true)

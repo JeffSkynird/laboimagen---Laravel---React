@@ -33,8 +33,8 @@ export default function index() {
     },
     {
       Header: 'Paciente',
-      accessor: 'pacient.names',
-      Cell: ({ row }) => (<span>{row.original.pacient.names} {row.original.pacient.last_names}</span>)
+      accessor: 'pacient',
+      Cell: ({ row }) => (<span>{row.original.pacient?.names} {row.original.pacient?.last_names}</span>)
     },
     {
       Header: 'Creado en',

@@ -31,10 +31,7 @@ export default function index() {
       Header: 'Categoría',
       accessor: 'name',
     },
-    {
-      Header: 'Descripción',
-      accessor: 'description',
-    },
+  
     {
       Header: 'Exámenes',
       accessor: 'exams_count',
